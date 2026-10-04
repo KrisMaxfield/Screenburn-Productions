@@ -1,0 +1,28 @@
+---
+layout: film.njk
+title: "Film Title"
+year: 2026
+genre: "Comedy"
+runtime: "5m 00s"
+madeFor: "Frederick 72-Hour Film Fest"
+production: "Oct 1–4, 2026"
+released: "Oct 4, 2026"
+logline: "One sentence about the film."
+poster: my-film.jpg        # file in src/images/
+youtube: VIDEO_ID          # the part after v= in the YouTube URL
+# draft: true              # visible with npm start, hidden from the published site
+prompt:
+  - "Festival prompt or criteria"
+submissions:
+  - "2026 Frederick 72"
+awards:
+  - result: "Won"
+    name: "2026 Best Writing"
+cast:
+  - role: "Character"
+    name: "Actor Name"
+crew:
+  - role: "Director"
+    name: "Person Name"
+---
+Behind-the-scenes notes. Markdown works here.

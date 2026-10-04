@@ -1,0 +1,60 @@
+---
+layout: base.njk
+---
+<article class="film">
+  <a class="back" href="/">&larr; All films</a>
+
+  <h1>{{ title }}</h1>
+  <p class="meta">
+    {% if year %}{{ year }}{% endif %}{% if genre %} · {{ genre }}{% endif %}{% if runtime %} · {{ runtime }}{% endif %}
+    {% if status %}<span class="badge">{{ status }}</span>{% endif %}
+  </p>
+
+  {% if poster %}
+    <img class="poster" src="/images/{{ poster }}" alt="Poster for {{ title }}">
+  {% endif %}
+
+  {% if logline %}<p class="logline">{{ logline }}</p>{% endif %}
+
+  {% if youtube %}
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/{{ youtube }}" title="{{ title }}" allowfullscreen loading="lazy"></iframe>
+    </div>
+  {% endif %}
+
+  <dl class="facts">
+    {% if madeFor %}<dt>Made for</dt><dd>{{ madeFor }}</dd>{% endif %}
+    {% if production %}<dt>Production</dt><dd>{{ production }}</dd>{% endif %}
+    {% if released %}<dt>Released</dt><dd>{{ released }}</dd>{% endif %}
+    {% if prompt %}
+      <dt>Prompt</dt>
+      <dd><ul>{% for p in prompt %}<li>{{ p }}</li>{% endfor %}</ul></dd>
+    {% endif %}
+    {% if awards %}
+      <dt>Awards</dt>
+      <dd>
+        <ul>{% for a in awards %}<li><strong>{{ a.result }}</strong> · {{ a.name }}</li>{% endfor %}</ul>
+      </dd>
+    {% endif %}
+    {% if submissions %}
+      <dt>Festivals</dt>
+      <dd><ul>{% for s in submissions %}<li>{{ s }}</li>{% endfor %}</ul></dd>
+    {% endif %}
+  </dl>
+
+  {% if cast %}
+    <h2>Cast</h2>
+    <ul class="credits">
+      {% for c in cast %}<li><span class="role">{{ c.role }}</span> {{ c.name }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if crew %}
+    <h2>Crew</h2>
+    <ul class="credits">
+      {% for c in crew %}<li><span class="role">{{ c.role }}</span> {{ c.name }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+
+  <div class="body">{{ content | safe }}</div>
+</article>

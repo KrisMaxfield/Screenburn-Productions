@@ -1,0 +1,23 @@
+---
+layout: base.njk
+---
+<section class="hero">
+  <h1>{{ site.name }}</h1>
+  <p>{{ site.tagline }}</p>
+</section>
+
+<div class="grid">
+  {% for film in collections.filmsByYear %}
+    <a class="card" href="{{ film.url }}">
+      {% if film.data.poster %}
+        <img src="/images/{{ film.data.poster }}" alt="Poster for {{ film.data.title }}">
+      {% else %}
+        <div class="noposter">{{ film.data.title }}</div>
+      {% endif %}
+      <div class="info">
+        <h2>{{ film.data.title }}</h2>
+        <span class="year">{{ film.data.year }}{% if film.data.festival %} · {{ film.data.festival }}{% endif %}</span>
+      </div>
+    </a>
+  {% endfor %}
+</div>
